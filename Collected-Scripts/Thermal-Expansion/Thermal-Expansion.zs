@@ -1,188 +1,171 @@
-//created by MyEternity and willis936
+//Author:TehporP
 
-import mods.nei.NEI;
-import minetweaker.item.IItemStack;
-import minetweaker.oredict.IOreDictEntry;
+import mods.gregtech.Assembler;
+import mods.gregtech.AlloySmelter;
 
-val RCount = 1;
-val GTHammer = <ore:craftingToolHardHammer>;
-val GTWrench = <ore:craftingToolWrench>;
 
-//by Oredict.
-val TEItems = [
-  <ThermalExpansion:Frame>,      // basic machine frame
-  <ThermalExpansion:Frame:4>,    // leadstone energy cell frame
-  <ThermalExpansion:Frame:6>,    // redstone energy cell frame
-  <ThermalExpansion:Frame:10>,   // tesseract frame (empty)
-  <ThermalExpansion:material:1>, // redstone reception coil
-  <ThermalExpansion:material:2>, // redstone transmission coil
-  <ThermalExpansion:material:3>, // redstone conductance coil
-  <ThermalExpansion:material>    // pneumatic servo
-] as IItemStack[];
+//Remove TE StrongBox
+recipes.remove(<ThermalExpansion:Strongbox:1>);
+recipes.remove(<ThermalExpansion:Strongbox:2>);
+recipes.remove(<ThermalExpansion:Strongbox:3>);
+recipes.remove(<ThermalExpansion:Strongbox:4>);
 
-val TEMiddle = [
-  <ore:gearSteel>,
-  <ore:blockRedstone>,
-  <ore:gemDiamond>,
-  <ore:plateDiamond>,
-  <ore:craftingPiston>,
-  <ore:craftingPiston>,
-  <ore:craftingPiston>,
-  <ore:gearGtAnyIron>
-] as IOreDictEntry[];
+//remove TE Cell
+recipes.remove(<ThermalExpansion:Cell:1>);
+recipes.remove(<ThermalExpansion:Cell:2>);
+recipes.remove(<ThermalExpansion:Cell:3>);
+recipes.remove(<ThermalExpansion:Cell:4>);
 
-val TESide = [
-  <ore:blockGlass>,
-  <ore:blockGlass>,
-  <ore:blockGlassHardened>,
-  <ore:blockGlassHardened>,
-  <ore:dustRedstone>,
-  <ore:dustRedstone>,
-  <ore:dustRedstone>,
-  <ore:dustRedstone>
-] as IOreDictEntry[];
+//Remove TE Stuff
+recipes.remove(<ThermalExpansion:material>);
+recipes.remove(<ThermalExpansion:material:1>);
+recipes.remove(<ThermalExpansion:material:2>);
+recipes.remove(<ThermalExpansion:material:3>);
 
-val TECorners = [
-  <ore:plateAnyIron>,
-  <ore:plateLead>,
-  <ore:plateElectrum>,
-  <ore:plateEnderium>,
-  <ore:plateGold>,
-  <ore:plateSilver>,
-  <ore:plateElectrum>,
-  <ore:plateAnyIron>
-] as IOreDictEntry[];
+//Remove TE Frame
+recipes.remove(<ThermalExpansion:Frame>);
+recipes.remove(<ThermalExpansion:Frame:1>);
+recipes.remove(<ThermalExpansion:Frame:2>);
+recipes.remove(<ThermalExpansion:Frame:3>);
+recipes.remove(<ThermalExpansion:Frame:4>);
+recipes.remove(<ThermalExpansion:Frame:5>);
+recipes.remove(<ThermalExpansion:Frame:6>);
+recipes.remove(<ThermalExpansion:Frame:7>);
+recipes.remove(<ThermalExpansion:Frame:8>);
+recipes.remove(<ThermalExpansion:Frame:9>);
 
-for i, X in TECorners {
-  var TEItem = TEItems[i];
-  recipes.remove(TEItem);
-  recipes.addShaped(TEItem * RCount, [[TECorners[i],TESide[i],TECorners[i]],[TESide[i],TEMiddle[i],TESide[i]],[TECorners[i],TESide[i],TECorners[i]]]);
-}
+//Remove TE tank
+recipes.remove(<ThermalExpansion:Tank:1>);
+recipes.remove(<ThermalExpansion:Tank:2>);
+recipes.remove(<ThermalExpansion:Tank:3>);
+recipes.remove(<ThermalExpansion:Tank:4>);
 
-//with Item in middle (Upgrades and so on).
+//Remove TE Cache
+recipes.remove(<ThermalExpansion:Cache:1>);
+recipes.remove(<ThermalExpansion:Cache:2>);
+recipes.remove(<ThermalExpansion:Cache:3>);
+recipes.remove(<ThermalExpansion:Cache:4>);
 
-val TEItems1 = [
-  <ThermalExpansion:Frame:8>
-] as IItemStack[];
+//Remove AE tank
+recipes.remove(<extracells:certustank>);
 
-val TEMiddle1 = [
-  <ThermalExpansion:Frame:6>
-] as IItemStack[];
+//New TE Farme recipes
+Assembler.addRecipe(<ThermalExpansion:Frame>, <gregtech:gt.blockmachines:4401>, <gregtech:gt.metaitem.01:18305> * 4 ,null, 400, 4);
+Assembler.addRecipe(<ThermalExpansion:Frame:1>, <ThermalExpansion:Frame>, <gregtech:gt.metaitem.01:18302> * 4 ,null, 600, 8);
+Assembler.addRecipe(<ThermalExpansion:Frame:2>, <ThermalExpansion:Frame:1>, <gregtech:gt.metaitem.01:18019> * 4 ,null, 800, 32);
+Assembler.addRecipe(<ThermalExpansion:Frame:3>, <ThermalExpansion:Frame:2>, <gregtech:gt.metaitem.01:18321> * 4 ,null, 1000, 64);
 
-val TESide1 = [
-  <ore:plateEnderium>
-] as IOreDictEntry[];
+//New AE tank recipe
+Assembler.addRecipe(<extracells:certustank>, <BuildCraft|Factory:tankBlock>, <Botania:quartz:1> * 8 ,null, 800, 32);
 
-val TECorners1 = [
-  <ore:plateGemDiamond>
-] as IOreDictEntry[];
+//New TE Tanke recipes
+Assembler.addRecipe(<ThermalExpansion:Tank:1>, <extracells:certustank>, <gregtech:gt.metaitem.01:18305> * 4 ,null, 600, 32);
+Assembler.addRecipe(<ThermalExpansion:Tank:2>, <ThermalExpansion:Tank:1>, <gregtech:gt.metaitem.01:18302> * 4 ,null, 800, 64);
+Assembler.addRecipe(<ThermalExpansion:Tank:3>, <ThermalExpansion:Tank:2>, <gregtech:gt.metaitem.01:18019> * 4 ,null, 1000, 72);
+Assembler.addRecipe(<ThermalExpansion:Tank:4>, <ThermalExpansion:Tank:3>, <gregtech:gt.metaitem.01:18321> * 4 ,null, 1200, 128);
 
-for i, X in TECorners1 {
-  var TEItem = TEItems1[i];
-  recipes.remove(TEItem);
-  recipes.addShaped(TEItem * RCount, [[TECorners1[i],TESide1[i],TECorners1[i]],[TESide1[i],TEMiddle1[i],TESide1[i]],[TECorners1[i],TESide1[i],TECorners1[i]]]);
-}
+//New TE Cache recipes
+Assembler.addRecipe(<ThermalExpansion:Cache:1>, <IronChest:BlockIronChest>, <gregtech:gt.metaitem.01:18305> * 4 ,null, 150, 16);
+Assembler.addRecipe(<ThermalExpansion:Cache:2>, <ThermalExpansion:Cache:1>, <gregtech:gt.metaitem.01:18302> * 4 ,null, 300, 32);
+Assembler.addRecipe(<ThermalExpansion:Cache:3>, <ThermalExpansion:Cache:2>, <gregtech:gt.metaitem.01:18019> * 4 ,null, 600, 64);
+Assembler.addRecipe(<ThermalExpansion:Cache:4>, <ThermalExpansion:Cache:3>, <gregtech:gt.metaitem.01:18321> * 4 ,null, 1200, 128);
 
-//other.
+//New TE Enegry Frame recipes
+recipes.addShaped(<ThermalExpansion:Frame:4>, [[<ore:craftingToolFile>, <minecraft:redstone>, <ore:craftingToolScrewdriver>], [<gregtech:gt.metaitem.01:17089>, <gregtech:gt.blockmachines:4185>, <gregtech:gt.metaitem.01:17089>], [<ore:craftingToolHardHammer>, <gregtech:gt.metaitem.01:17089>, <ore:craftingToolWrench>]]);
+Assembler.addRecipe(<ThermalExpansion:Frame:5>, <ThermalExpansion:Frame:4>, <gregtech:gt.metaitem.01:18302> * 4 ,null, 600, 32);
+Assembler.addRecipe(<ThermalExpansion:Frame:7>, <ThermalExpansion:Frame:5>, <gregtech:gt.metaitem.01:18019> * 4 ,null, 1000, 128);
+Assembler.addRecipe(<ThermalExpansion:Frame:9>, <ThermalExpansion:Frame:7>, <gregtech:gt.metaitem.01:18321> * 4 ,null, 1400, 256);
+recipes.addShaped(<ThermalExpansion:Frame:6>, [[<ore:plateInvar>, <ore:stickInvar>, <ore:craftingToolHardHammer>], [<ore:stickInvar>, <ore:frameGtInvar>, <ore:stickInvar>], [<ore:craftingToolFile>, <ore:stickInvar>, <ore:plateInvar>]]);
+recipes.addShaped(<ThermalExpansion:Frame:8>, [[<ore:plateEnderium>, <ore:stickEnderium>, <ore:craftingToolHardHammer>], [<ore:stickEnderium>, <ore:frameGtEnderium>, <ore:stickEnderium>], [<ore:craftingToolFile>, <ore:stickEnderium>, <ore:plateEnderium>]]);
 
-val TEEngines = [
-  <ThermalExpansion:Dynamo>,
-  <ThermalExpansion:Dynamo:1>,
-  <ThermalExpansion:Dynamo:2>,
-  <ThermalExpansion:Dynamo:3>,
-  <ThermalExpansion:Dynamo:4>
-] as IItemStack[];
+//New TE Stuff recipes
+recipes.addShaped(<ThermalExpansion:material:3>, [[<gregtech:gt.blockmachines:1443>, null, null], [null, <IC2:itemPartCircuit>, null], [null, null, <gregtech:gt.blockmachines:1443>]]);
+recipes.addShaped(<ThermalExpansion:material:2>, [[null, null, <gregtech:gt.blockmachines:1463>], [null, <IC2:itemPartCircuit>, null], [<gregtech:gt.blockmachines:1463>, null, null]]);
+recipes.addShaped(<ThermalExpansion:material:1>, [[null, null, <gregtech:gt.blockmachines:1363>], [null, <IC2:itemPartCircuit>, null], [<gregtech:gt.blockmachines:1363>, null, null]]);
+recipes.addShaped(<ThermalExpansion:material>, [[<gregtech:gt.metaitem.01:32640>, null, <gregtech:gt.metaitem.01:32640>], [<ore:pipeMediumCopper>, <IC2:itemPartCircuit>, <ore:pipeMediumCopper>], [<gregtech:gt.metaitem.01:32640>, null, <gregtech:gt.metaitem.01:32640>]]);
 
-val TEEngGear = [
-  <ore:gearGtLead>,
-  <ore:gearGtInvar>,
-  <ore:gearGtAnyIron>,
-  <ore:gearGtBronze>,
-  <ore:gearGtElectrum>
-] as IOreDictEntry[];
+//New TE cell Recipes
+recipes.addShaped(<ThermalExpansion:Cell:4>, [[<ore:craftingToolHardHammer>, <ThermalExpansion:material:1>, <ore:craftingToolScrewdriver>], [<ore:plateEnderium>, <ThermalExpansion:Frame:9>, <ore:plateEnderium>], [<ore:plateEnderium>, <ThermalExpansion:material:1>, <ore:plateEnderium>]]);
+recipes.addShaped(<ThermalExpansion:Cell:3>, [[<ore:craftingToolHardHammer>, <ThermalExpansion:material:1>, <ore:craftingToolScrewdriver>], [<ore:plateStainlessSteel>, <ThermalExpansion:Frame:7>, <ore:plateStainlessSteel>], [<ore:plateStainlessSteel>, <ThermalExpansion:material:1>, <ore:plateStainlessSteel>]]);
+recipes.addShaped(<ThermalExpansion:Cell:2>, [[<ore:craftingToolHardHammer>, <ThermalExpansion:material:1>, <ore:craftingToolScrewdriver>], [<ore:plateInvar>, <ThermalExpansion:Frame:5>, <ore:plateInvar>], [<ore:plateInvar>, <ThermalExpansion:material:1>, <ore:plateInvar>]]);
+recipes.addShaped(<ThermalExpansion:Cell:1>, [[<ore:craftingToolHardHammer>, <ThermalExpansion:material:1>, <ore:craftingToolScrewdriver>], [<ore:plateLead>, <ThermalExpansion:Frame:4>, <ore:plateLead>], [<ore:plateLead>, <ThermalExpansion:material:1>, <ore:plateLead>]]);
 
-val TEEngPlate = [
-  <ore:plateLead>,
-  <ore:plateInvar>,
-  <ore:plateAnyIron>,
-  <ore:plateBronze>,
-  <ore:plateElectrum>
-] as IOreDictEntry[];
+//New TE StrongBox Recipes
+Assembler.addRecipe(<ThermalExpansion:Strongbox:1>, <IronChest:BlockIronChest:3>, <gregtech:gt.metaitem.01:18305> * 4 , null, 400, 2);
+Assembler.addRecipe(<ThermalExpansion:Strongbox:2>, <ThermalExpansion:Strongbox:1>, <gregtech:gt.metaitem.01:18302> * 4 , null, 600, 4);
+Assembler.addRecipe(<ThermalExpansion:Strongbox:3>, <ThermalExpansion:Strongbox:2>, <gregtech:gt.metaitem.01:18019> * 4 , null, 800, 6);
+Assembler.addRecipe(<ThermalExpansion:Strongbox:4>, <ThermalExpansion:Strongbox:3>, <gregtech:gt.metaitem.01:18321> * 4 , null, 1000, 8);
 
-var Coil = <ThermalExpansion:material:2>;
-var Pist = <ore:craftingPiston>;
+//New TE Glass Recipes
+AlloySmelter.addRecipe(<ThermalExpansion:Glass> * 2, <gregtech:gt.metaitem.01:2804> * 4, <gregtech:gt.metaitem.01:2089>, 200, 16);
+AlloySmelter.addRecipe(<ThermalExpansion:Glass> * 2, <gregtech:gt.metaitem.01:2804> * 4, <gregtech:gt.metaitem.01:11089>, 200, 16);
+AlloySmelter.addRecipe(<ThermalExpansion:Glass:1> * 2, <gregtech:gt.metaitem.01:2804> * 4, <ThermalFoundation:material:43>, 200, 16);
+AlloySmelter.addRecipe(<ThermalExpansion:Glass:1> * 2, <gregtech:gt.metaitem.01:2804> * 4, <ThermalFoundation:material:75>, 200, 16);
 
-for i, X in TEEngPlate {
-  var TEItem = TEEngines[i];
-  var Plate = TEEngPlate[i];
-  var Gear  = TEEngGear[i];
-  
-  recipes.remove(TEItem);
-  recipes.addShaped(TEItem * RCount, [[GTHammer.transformDamage(100),Coil,GTWrench.transformDamage(100)],[Gear,Plate,Gear],[Plate,Pist,Plate]]);
-}
+//Upgrades
+recipes.remove(<ThermalExpansion:augment:1>);
+Assembler.addRecipe(<ThermalExpansion:augment:1>, <ThermalExpansion:material>, <minecraft:hopper> * 4 , null, 400, 64);
 
-//gears nerf.
-//killing cross mod gears.
-recipes.remove(<ThermalFoundation:material:12>);
-recipes.remove(<ThermalFoundation:material:13>);
-<ore:gearIron>.remove(<ThermalFoundation:material:12>);
-<ore:gearGold>.remove(<ThermalFoundation:material:13>);
-NEI.hide(<ThermalFoundation:material:12>);
-NEI.hide(<ThermalFoundation:material:13>);
+recipes.remove(<ThermalExpansion:augment:48>);
+Assembler.addRecipe(<ThermalExpansion:augment:48>, <ThermalExpansion:augment:1>, <ThermalExpansion:material:2> * 2 , null, 400, 64);
 
-val TEGear = [
-  <ThermalFoundation:material:128>,
-  <ThermalFoundation:material:129>,
-  <ThermalFoundation:material:130>,
-  <ThermalFoundation:material:131>,
-  <ThermalFoundation:material:137>,
-  <ThermalFoundation:material:135>,
-  <ThermalFoundation:material:136>,
-  <ThermalFoundation:material:132>,
-  <ThermalFoundation:material:133>,
-  <ThermalFoundation:material:139>,
-  <ThermalFoundation:material:138>,
-  <ThermalFoundation:material:134>,
-  <ThermalFoundation:material:140>
-] as IItemStack[];
+recipes.remove(<ThermalExpansion:augment:49>);
+Assembler.addRecipe(<ThermalExpansion:augment:49>, <IC2:itemRecipePart> * 2, <ThermalExpansion:material:2> * 2 , null, 400, 120);
 
-val GearCenter = [
-  <ore:gearStone>,
-  <ore:gearStone>,
-  <ore:gearIron>,
-  <ore:gearIron>,
-  <ore:gearIron>,
-  <ore:gearIron>,
-  <ore:gearIron>,
-  <ore:gearIron>,
-  <ore:gearGold>,
-  <ore:gearGold>,
-  <ore:gearGold>,
-  <ore:gearDiamond>,
-  <ore:gearDiamond>
-] as IOreDictEntry[];
+recipes.remove(<ThermalExpansion:augment:64>);
+Assembler.addRecipe(<ThermalExpansion:augment:64>, <gregtech:gt.metaitem.01:32610> * 2, <ThermalExpansion:material:2> * 4 , null, 800, 64);
 
-val GearCorners = [
-  <ore:ingotCopper>,
-  <ore:ingotTin>,
-  <ore:ingotSilver>,
-  <ore:ingotLead>,
-  <ore:ingotBronze>,
-  <ore:ingotElectrum>,
-  <ore:ingotInvar>,
-  <ore:ingotNickel>,
-  <ore:ingotPlatinum>,
-  <ore:ingotLumium>,
-  <ore:ingotSignalum>,
-  <ore:ingotMithril>,
-  <ore:ingotEnderium>
-] as IOreDictEntry[];
+recipes.remove(<ThermalExpansion:augment:65>);
+Assembler.addRecipe(<ThermalExpansion:augment:65>, <gregtech:gt.metaitem.01:32611> * 2, <ThermalExpansion:material:2> * 4 , null, 800, 120);
 
-for i, X in GearCorners {
-  var TEItem = TEGear[i];
-  var Corner = GearCorners[i];
-  var Middle = GearCenter[i];
-  recipes.remove(TEItem);
-  recipes.addShaped(TEItem * RCount, [[GTHammer.transformDamage(100),Corner,null],[Corner,Middle,Corner],[null,Corner,GTWrench.transformDamage(100)]]);
-}
+recipes.remove(<ThermalExpansion:augment:66>);
+Assembler.addRecipe(<ThermalExpansion:augment:66>, <gregtech:gt.metaitem.01:32612> * 2, <ThermalExpansion:material:2> * 4 , null, 1200, 256);
+
+recipes.remove(<ThermalExpansion:augment:80>);
+Assembler.addRecipe(<ThermalExpansion:augment:80>, <gregtech:gt.metaitem.01:32640> * 2, <IC2:upgradeModule> * 4 , null, 1600, 64);
+
+recipes.remove(<ThermalExpansion:augment:81>);
+Assembler.addRecipe(<ThermalExpansion:augment:81>, <gregtech:gt.metaitem.01:32641> * 2, <IC2:upgradeModule> * 4 , null, 800, 120);
+
+recipes.remove(<ThermalExpansion:augment:82>);
+Assembler.addRecipe(<ThermalExpansion:augment:82>, <gregtech:gt.metaitem.01:32642> * 2, <IC2:upgradeModule> * 4 , null, 1200, 256);
+
+recipes.remove(<ThermalExpansion:augment:82>);
+Assembler.addRecipe(<ThermalExpansion:augment:82>, <gregtech:gt.metaitem.01:32642> * 2, <IC2:upgradeModule> * 4 , null, 1600, 256);
+
+recipes.remove(<ThermalExpansion:augment:112>);
+Assembler.addRecipe(<ThermalExpansion:augment:112>, <gregtech:gt.metaitem.01:32650> * 2, <gregtech:gt.metaitem.01:32729> * 4 , null, 800, 120);
+
+recipes.remove(<ThermalExpansion:augment:113>);
+Assembler.addRecipe(<ThermalExpansion:augment:113>, <gregtech:gt.metaitem.01:32651> * 2, <gregtech:gt.metaitem.01:32729> * 4 , null, 1200, 256);
+
+recipes.remove(<ThermalExpansion:augment:114>);
+Assembler.addRecipe(<ThermalExpansion:augment:114>, <gregtech:gt.metaitem.01:32652> * 2, <gregtech:gt.metaitem.01:32729> * 4 , null, 1600, 256);
+
+recipes.remove(<ThermalExpansion:augment:128>);
+Assembler.addRecipe(<ThermalExpansion:augment:128>, <IC2:upgradeModule> * 2, <gregtech:gt.metaitem.01:32600> * 4 , null, 800, 120);
+
+recipes.remove(<ThermalExpansion:augment:129>);
+Assembler.addRecipe(<ThermalExpansion:augment:129>, <IC2:upgradeModule> * 2, <gregtech:gt.metaitem.01:32601> * 4 , null, 1200, 256);
+
+recipes.remove(<ThermalExpansion:augment:130>);
+Assembler.addRecipe(<ThermalExpansion:augment:130>, <IC2:upgradeModule> * 2, <gregtech:gt.metaitem.01:32602> * 4 ,null, 1600, 256);
+
+recipes.remove(<ThermalExpansion:augment:312>);
+Assembler.addRecipe(<ThermalExpansion:augment:312>, <ThermalExpansion:material> * 2, <gregtech:gt.metaitem.01:32640> * 4 , null, 800, 120);
+
+recipes.remove(<ThermalExpansion:augment:313>);
+Assembler.addRecipe(<ThermalExpansion:augment:313>, <ThermalExpansion:material> * 2, <gregtech:gt.metaitem.01:32641> * 4 , null, 1200, 256);
+
+recipes.remove(<ThermalExpansion:augment:314>);
+Assembler.addRecipe(<ThermalExpansion:augment:314>, <ThermalExpansion:material> * 2, <gregtech:gt.metaitem.01:32642> * 4 , null, 1600, 256);
+
+recipes.remove(<ThermalExpansion:augment:144>);
+Assembler.addRecipe(<ThermalExpansion:augment:144>, <gregtech:gt.metaitem.01:32630> * 2, <minecraft:lava_bucket>, null, 200, 64);
+
+recipes.remove(<ThermalExpansion:augment:256>);
+Assembler.addRecipe(<ThermalExpansion:augment:256>, <Botania:specialFlower>.withTag({type: "exoflame"}) * 2, <ThermalExpansion:material:1>, null, 200, 64);
+
+
+
 
